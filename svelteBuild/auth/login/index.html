@@ -13,7 +13,7 @@
 		<link rel="modulepreload" href="/_app/chunks/singletons-12a22614.js">
 		<link rel="modulepreload" href="/_app/pages/__layout.svelte-461a7fea.js">
 		<link rel="modulepreload" href="/_app/chunks/login-e99834ab.js">
-		<link rel="modulepreload" href="/_app/pages/index.svelte-a350a75d.js">
+		<link rel="modulepreload" href="/_app/pages/auth/login.svelte-ec3a4b57.js">
 		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
 
 		<script type="module">
@@ -31,11 +31,11 @@
 					error: null,
 					nodes: [
 						import("/_app/pages/__layout.svelte-461a7fea.js"),
-						import("/_app/pages/index.svelte-a350a75d.js")
+						import("/_app/pages/auth/login.svelte-ec3a4b57.js")
 					],
 					page: {
 						host: location.host, // TODO this is redundant
-						path: "\u002F",
+						path: "\u002Fauth\u002Flogin",
 						query: new URLSearchParams(""),
 						params: {}
 					}
@@ -47,8 +47,9 @@
 		<div id="svelte">
 
 
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<form><input type="text" name="email">
+  <input type="password" name="password">
+  <input type="submit" value="Sign in"></form>
 
 
 
