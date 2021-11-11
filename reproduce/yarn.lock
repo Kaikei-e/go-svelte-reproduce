@@ -38,6 +38,18 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@felte/common@0.5.2":
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/@felte/common/-/common-0.5.2.tgz#e65f68214433ed0905f2952c7fa1694c5422ac19"
+  integrity sha512-khpz6hUp6OubsOEls05bYc5TnzBCozv+awi9du2x639bePaWbaLaoNk4chFAIjCyW8l5p2XaXlFLNS5O6ZdKYg==
+
+"@felte/core@0.2.5":
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/@felte/core/-/core-0.2.5.tgz#a903136225a771e78c4231ebbb3202e2f9218ad7"
+  integrity sha512-rg0MZSc32xycVU5LXYGuZ3T21bkF2Qdt1sw/Hlcc0be+YvWM0AZxaNfYtJwUKKAF223+lec4WIGWWQswbsq5vA==
+  dependencies:
+    "@felte/common" "0.5.2"
+
 "@humanwhocodes/config-array@^0.5.0":
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.5.0.tgz#1407967d4c6eecd7388f83acf1eaf4d0c6e58ef9"
@@ -81,10 +93,10 @@
     estree-walker "^2.0.1"
     picomatch "^2.2.2"
 
-"@sveltejs/adapter-static@^1.0.0-next.0":
-  version "1.0.0-next.0"
-  resolved "https://registry.yarnpkg.com/@sveltejs/adapter-static/-/adapter-static-1.0.0-next.0.tgz#558c3339259edd001b82bb8a978846dce53d3b7c"
-  integrity sha512-5QYrPSjfqI/Jd2av/WuwhZjRZHaWu8tGmBHM6dh5W7cd4s0PG3eW0p4eASZESHmtCFWGG00PYMRjUUFPPtEcOg==
+"@sveltejs/adapter-static@^1.0.0-next.21":
+  version "1.0.0-next.21"
+  resolved "https://registry.yarnpkg.com/@sveltejs/adapter-static/-/adapter-static-1.0.0-next.21.tgz#b2819478e1cc7344491e6ebb6d2a49cef5f92fc9"
+  integrity sha512-B4+QoUVAaANKx+mHntG8SqF45zbj3Ct4Akg/cGauo6COyfKZRhO5OsMa+wPuT2TKJBZC4eEDK0p+p9nyQBkxKQ==
 
 "@sveltejs/kit@next":
   version "1.0.0-next.195"
@@ -723,6 +735,13 @@ fastq@^1.6.0:
   integrity sha512-YpkpUnK8od0o1hmeSc7UUs/eB/vIPWJYjKck2QKIzAf71Vm1AAQ3EbuZB3g2JIy+pg+ERD0vqI79KyZiB2e2Nw==
   dependencies:
     reusify "^1.0.4"
+
+felte@^0.8.5:
+  version "0.8.5"
+  resolved "https://registry.yarnpkg.com/felte/-/felte-0.8.5.tgz#88b537cefad078d79d9f0fcf2db7400896a3ba71"
+  integrity sha512-RN1G5mxeUrknp21CW5xSUJQzZacAykYsXInFgnG7y7bJnsttyRM9NX2vHhCiFIF9P9OjxezrZsHTmOZkr/dt4Q==
+  dependencies:
+    "@felte/core" "0.2.5"
 
 file-entry-cache@^6.0.1:
   version "6.0.1"
