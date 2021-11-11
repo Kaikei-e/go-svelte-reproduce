@@ -20,7 +20,7 @@ func LoginHandler(ctx *gin.Context ){
 	fmt.Println(user.Password)
 	fmt.Println(user.ID)
 	
-
+	ctx.SetCookie("userSession", sessionmanager.SIDMaker(), 3600, "/", "localhost", false, true)
 
 	if user.Password == "hogehoge" && user.ID == "Gopher"{
 		user.SessionToken = sessionmanager.SIDMaker()
