@@ -1,12 +1,10 @@
 import type * as SvelteTypes from "@sveltejs/kit"
 
 import { get, writable } from 'svelte/store';
-import { goto } from '$app/navigation';
 
 
 type userData = {
-    email: string;
-    name: string;
+    id: string;
     sessionToken: string;
 }
 
@@ -30,56 +28,57 @@ export const isRegisterSuccess = writable({
 
 
 
-export async function login(formData: object): Promise<void> {
-  let resData;
+export async function trylogin(formData: object): Promise<void> {
+    let resData;
 
-  // Validate the did token on the server
-  await fetch('/api/tryLogin', {
+    await fetch('/api/v1/tryLogin', {
 
-      method: 'POST', // *GET, POST, PUT, DELETE, etc.
-      mode: 'no-cors', // no-cors, *cors, same-origin
-      //cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-      //credentials: 'same-origin', // include, *same-origin, omit
-      headers: {
-          'Content-Type': 'application/json',
-          'Set-Cookie': 'SameSite=none'
-      },
-      body: JSON.stringify(formData),
-      credentials: 'include'
-  }).then(res => {
-      if (!res.ok) {
-          console.error("Response is bad. Server error : " + res)
-          console.log(res.headers)
-      } else {
-          resData = res;
-      }
-  }).catch(error => console.error("Can't get the response properly : " + error));
-
-
-  if (resData.ok) {
-      const data = await resData.json();
-
-      console.log(data);
-      
-
-      let uData: userData = {
-          email: data.userData.email,
-          name: data.userData.name,
-          sessionToken: data.userData.sessionToken,
-      }
+        method: 'POST', // *GET, POST, PUT, DELETE, etc.
+        mode: 'no-cors', // no-cors, *cors, same-origin
+        //cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+        //credentials: 'same-origin', // include, *same-origin, omit
+        headers: {
+            'Content-Type': 'application/json',
+            'Set-Cookie': 'SameSite=none'
+        },
+        body: JSON.stringify(formData),
+        credentials: 'include'
+    }).then(res => {
+        if (!res.ok) {
+            console.error("Response is bad. Server error : " + res)
+            console.log(res.headers)
+        } else {
+            console.log(res.json())
+            resData = res;
+        }
+    }).catch(error => console.error("Can't get the response properly : " + error));
 
 
-      const passedUser: userStatusType = {
-          loading: false,
-          user: uData
-      }
+    if (resData.ok) {
+        const data = await resData.json();
 
-      userStatus.set(passedUser);
+        console.log(data);
 
-      console.log(get(userStatus));
-      
 
-  } else {
-      console.log("Res is empty!!")
-  }
+        let uData: userData = {
+            id: data["userId"],
+            sessionToken: data["userToken"],
+        }
+
+
+
+
+        const passedUser: userStatusType = {
+            loading: false,
+            user: uData
+        }
+
+        userStatus.set(passedUser);
+
+        console.log(get(userStatus));
+
+
+    } else {
+        console.log("Res is empty!!")
+    }
 }

@@ -1,31 +1,33 @@
 <script>
-import { goto } from '$app/navigation';
+	import { goto } from '$app/navigation';
 
-import { login, userStatus } from '$lib/API/login';
+	import { trylogin, userStatus } from '$lib/API/login';
 
-  import { createForm } from 'felte';
+	import { createForm } from 'felte';
 
-  const { form } = createForm({
-    onSubmit: async(values) => {
-      await toHome(values)
-    },
+	const { form } = createForm({
+		onSubmit: (values) => {
+			toHome(values);
+		}
+	});
 
-  })
-
-  async function toHome(userData) {
+	async function toHome(userData) {
 		try {
-			await login(userData);
-			if ($userStatus.user.sessionToken) {//week authentication
+			await trylogin(userData);
+			if ($userStatus.user.sessionToken) {
+				//week authentication
 				goto('/');
 			}
 		} catch (err) {
-			console.log(err);
+			console.error(err);
 		}
 	}
 </script>
 
-<form use:form>
-  <input type="text" name="email">
-  <input type="password" name="password">
-  <input type="submit" value="Sign in">
+<form use:form class="content">
+	<label>ID</label>
+	<input type="text" name="id" />
+	<label>Password</label>
+	<input type="password" name="password" />
+	<input type="submit" value="Sign in" />
 </form>

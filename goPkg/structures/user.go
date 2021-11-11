@@ -1,7 +1,7 @@
 package structures
 
 type LoginUser struct {
-	Email    string `json:"email"`
+	SessionToken    string `json:"sessionToken"`
 	Password string `json:"password"`
-	Name     string `json:"name"`
+	ID       string `json:"id"`
 }
